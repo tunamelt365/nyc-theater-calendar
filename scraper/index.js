@@ -26,7 +26,7 @@ const PUPPETEER_ARGS = [
 
 // Wrap a scraper that needs its own browser instance
 async function withBrowser(fn) {
-  const browser = await puppeteer.launch({ headless: true, executablePath: getChromePath(), args: PUPPETEER_ARGS });
+  const browser = await puppeteer.launch({ headless: true, executablePath: getChromePath(), args: PUPPETEER_ARGS, protocolTimeout: 120000 });
   try {
     return await fn(browser);
   } finally {
