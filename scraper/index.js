@@ -3,10 +3,31 @@ const { execSync } = require('child_process');
 const { getCurrentWeekDates, getWeekBounds } = require('./utils');
 
 function getChromePath() {
-  if (process.env.PUPPETEER_EXECUTABLE_PATH) return process.env.PUPPETEER_EXECUTABLE_PATH;
+  if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+    console.log('[chromium] Using env var:', process.env.PUPPETEER_EXECUTABLE_PATH);
+    return process.env.PUPPETEER_EXECUTABLE_PATH;
+  }
+  const candidates = [
+    '/usr/bin/chromium',
+    '/usr/bin/chromium-browser',
+    '/usr/bin/google-chrome',
+    '/usr/bin/google-chrome-stable',
+    '/nix/var/nix/profiles/default/bin/chromium',
+  ];
+  for (const p of candidates) {
+    if (require('fs').existsSync(p)) {
+      console.log('[chromium] Found at:', p);
+      return p;
+    }
+  }
   try {
-    return execSync('which chromium || which chromium-browser', { encoding: 'utf8' }).trim();
+    const found = execSync('which chromium 2>/dev/null || which chromium-browser 2>/dev/null || find /usr /nix -name "chromium" -type f 2>/dev/null | head -1', { encoding: 'utf8' }).trim();
+    if (found) {
+      console.log('[chromium] Found via search:', found);
+      return found;
+    }
   } catch (e) {}
+  console.log('[chromium] Falling back to puppeteer default:', puppeteer.executablePath());
   return puppeteer.executablePath();
 }
 
