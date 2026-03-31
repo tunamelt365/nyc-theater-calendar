@@ -1,0 +1,2 @@
+[deploy]
+startCommand = "PUPPETEER_EXECUTABLE_PATH=$(which chromium) node server.js"
