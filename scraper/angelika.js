@@ -45,7 +45,11 @@ async function getBearerToken(browser, locationSlug) {
 
   try {
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
-    await new Promise(r => setTimeout(r, 12000));
+    // Wait up to 25s for the token to be captured
+    const start = Date.now();
+    while (!token && Date.now() - start < 25000) {
+      await new Promise(r => setTimeout(r, 500));
+    }
   } finally {
     await page.close().catch(() => {});
   }
