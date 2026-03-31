@@ -25,8 +25,8 @@ const PUPPETEER_ARGS = [
 ];
 
 // Wrap a scraper that needs its own browser instance
-async function withBrowser(fn) {
-  const browser = await puppeteer.launch({ headless: true, executablePath: getChromePath(), args: PUPPETEER_ARGS, protocolTimeout: 300000 });
+async function withBrowser(fn, protocolTimeout = 60000) {
+  const browser = await puppeteer.launch({ headless: true, executablePath: getChromePath(), args: PUPPETEER_ARGS, protocolTimeout });
   try {
     return await fn(browser);
   } finally {
@@ -47,7 +47,7 @@ async function runAllScrapers() {
     { name: 'Angelika Film Center',             fn: () => withBrowser(b => angelika(b, 'nyc', 'Angelika Film Center', weekDates)) },
     { name: 'Angelika Village East',            fn: () => withBrowser(b => angelika(b, 'villageeast', 'Angelika Village East', weekDates)) },
     { name: 'Quad Cinema',                      fn: () => withBrowser(b => quad(b, weekDates)) },
-    { name: 'Paris Theater',                    fn: () => withBrowser(b => paris(b, weekDates)) },
+    { name: 'Paris Theater',                    fn: () => withBrowser(b => paris(b, weekDates), 180000) },
     { name: 'Anthology Film Archives',          fn: () => withBrowser(b => anthology(b, weekDates)) },
 
     // Non-Puppeteer scrapers — run directly
