@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NYC Movie Calendar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@600,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="app-chrome">
+
+    <div id="title-bar">
+      <div id="title-bar-left">
+        <span>🎬</span>
+        <span>NYC Movie Calendar - Internet Explorer</span>
+      </div>
+      <div id="title-bar-btns">
+        <button class="win-btn">&#x2013;</button>
+        <button class="win-btn">&#x25A1;</button>
+        <button class="win-btn win-close">&#x2715;</button>
+      </div>
+    </div>
+
+    <div id="menu-bar">
+      <span>File</span><span>Edit</span><span>View</span><span>Favorites</span><span>Tools</span><span>Help</span>
+    </div>
+
+    <div id="ie-toolbar">
+      <button class="ie-btn" disabled>&#9664; Back</button>
+      <button class="ie-btn" disabled>Forward &#9654;</button>
+      <button class="ie-btn">Stop</button>
+      <button class="ie-btn" onclick="triggerRefresh()">Refresh</button>
+      <div id="address-bar">
+        <span id="address-label">Address</span>
+        <div id="address-input">http://localhost:3000/this-week</div>
+        <button class="ie-btn" id="go-btn">Go</button>
+      </div>
+    </div>
+
+    <header>
+      <h1>&#10022; NYC Movie Calendar &#10022;</h1>
+      <div class="header-left">
+        <span id="week-label"></span>
+      </div>
+      <div class="header-right">
+        <span id="last-updated"></span>
+        <button id="refresh-btn" onclick="triggerRefresh()">&#8635; Refresh</button>
+      </div>
+    </header>
+
+    <div id="progress-bar-track"><div id="progress-bar"></div></div>
+    <div id="status-bar" class="status-bar hidden"></div>
+
+  </div><!-- end #app-chrome -->
+
+  <div id="ascii-row" aria-hidden="true">
+
+    <div class="ascii-cat"><span class="frame-a">=^.^=</span><span class="frame-b">=^-^=</span></div>
+
+    <!-- Popcorn -->
+    <svg class="pixel-icon pixel-bounce" viewBox="0 0 14 16" width="18" height="20">
+      <rect x="1" y="0" width="3" height="3" fill="#ffee00"/>
+      <rect x="5" y="1" width="2" height="2" fill="#fff"/>
+      <rect x="8" y="0" width="3" height="3" fill="#ffee00"/>
+      <rect x="0" y="2" width="3" height="2" fill="#fff"/>
+      <rect x="11" y="1" width="3" height="2" fill="#ffee00"/>
+      <rect x="2" y="3" width="10" height="2" fill="#ffee00"/>
+      <rect x="3" y="5" width="8" height="1" fill="#fff"/>
+      <rect x="3" y="6" width="8" height="1" fill="#cc0000"/>
+      <rect x="3" y="7" width="8" height="1" fill="#fff"/>
+      <rect x="3" y="8" width="8" height="1" fill="#cc0000"/>
+      <rect x="3" y="9" width="8" height="1" fill="#fff"/>
+      <rect x="3" y="10" width="8" height="1" fill="#cc0000"/>
+      <rect x="3" y="11" width="8" height="1" fill="#fff"/>
+      <rect x="3" y="12" width="8" height="1" fill="#cc0000"/>
+      <rect x="4" y="13" width="6" height="1" fill="#880000"/>
+      <rect x="5" y="14" width="4" height="1" fill="#880000"/>
+    </svg>
+
+    <div class="ascii-dancer"><span class="frame-a">(^_^)/</span><span class="frame-b">\(^_^)/</span></div>
+    <div class="ascii-cat c2"><span class="frame-a">=^.^=</span><span class="frame-b">=^o^=</span></div>
+
+    <!-- Film strip -->
+    <svg class="pixel-icon pixel-flicker" viewBox="0 0 16 14" width="20" height="18">
+      <rect x="0" y="0" width="16" height="14" fill="#111"/>
+      <rect x="1" y="1" width="2" height="2" fill="#666"/>
+      <rect x="5" y="1" width="2" height="2" fill="#666"/>
+      <rect x="9" y="1" width="2" height="2" fill="#666"/>
+      <rect x="13" y="1" width="2" height="2" fill="#666"/>
+      <rect x="1" y="11" width="2" height="2" fill="#666"/>
+      <rect x="5" y="11" width="2" height="2" fill="#666"/>
+      <rect x="9" y="11" width="2" height="2" fill="#666"/>
+      <rect x="13" y="11" width="2" height="2" fill="#666"/>
+      <rect x="2" y="4" width="12" height="6" fill="#3355aa"/>
+      <rect x="3" y="5" width="4" height="4" fill="#4466cc"/>
+      <rect x="8" y="5" width="4" height="4" fill="#5577dd"/>
+      <rect x="4" y="5" width="2" height="2" fill="#88aaff"/>
+      <rect x="9" y="6" width="2" height="2" fill="#88aaff"/>
+    </svg>
+
+    <div class="ascii-face blink-face">:-D</div>
+    <div class="ascii-cat c3"><span class="frame-a">=^.^=</span><span class="frame-b">=^-^=</span></div>
+    <div class="ascii-spin">-</div>
+
+    <!-- Camera -->
+    <svg class="pixel-icon pixel-bounce" viewBox="0 0 16 14" width="20" height="18" style="animation-delay:0.3s">
+      <rect x="5" y="0" width="4" height="2" fill="#888"/>
+      <rect x="1" y="2" width="14" height="10" fill="#888"/>
+      <rect x="0" y="3" width="16" height="8" fill="#aaa"/>
+      <rect x="5" y="3" width="6" height="6" fill="#333"/>
+      <rect x="6" y="4" width="4" height="4" fill="#000066"/>
+      <rect x="7" y="4" width="2" height="1" fill="#4444aa"/>
+      <rect x="7" y="5" width="1" height="1" fill="#8888ff"/>
+      <rect x="1" y="3" width="2" height="2" fill="#555"/>
+      <rect x="13" y="3" width="2" height="1" fill="#cc0000"/>
+    </svg>
+
+    <div class="ascii-cat c4"><span class="frame-a">=^.^=</span><span class="frame-b">=^u^=</span></div>
+    <div class="ascii-face2 blink-face2">;-)</div>
+
+    <!-- Soda cup -->
+    <svg class="pixel-icon pixel-bounce" viewBox="0 0 12 16" width="16" height="20" style="animation-delay:0.6s">
+      <rect x="8" y="0" width="2" height="5" fill="#ff4444"/>
+      <rect x="8" y="0" width="2" height="5" fill="#ff4444"/>
+      <rect x="2" y="2" width="8" height="2" fill="#999"/>
+      <rect x="1" y="3" width="10" height="1" fill="#bbb"/>
+      <rect x="2" y="4" width="8" height="10" fill="#cc0000"/>
+      <rect x="3" y="5" width="6" height="8" fill="#dd1111"/>
+      <rect x="3" y="6" width="6" height="1" fill="#fff"/>
+      <rect x="3" y="8" width="6" height="1" fill="#fff"/>
+      <rect x="3" y="10" width="6" height="1" fill="#fff"/>
+      <rect x="3" y="14" width="6" height="1" fill="#990000"/>
+      <rect x="4" y="15" width="4" height="1" fill="#770000"/>
+    </svg>
+
+    <div class="ascii-cat c5"><span class="frame-a">=^.^=</span><span class="frame-b">=^-^=</span></div>
+    <div class="ascii-wave"><span class="frame-a">&lt;(^.^)&gt;</span><span class="frame-b">(^.^)&gt;</span></div>
+
+    <!-- Clapperboard -->
+    <svg class="pixel-icon pixel-clap" viewBox="0 0 16 14" width="20" height="18">
+      <rect x="0" y="0" width="16" height="4" fill="#000"/>
+      <rect x="2" y="0" width="2" height="4" fill="#fff"/>
+      <rect x="6" y="0" width="2" height="4" fill="#fff"/>
+      <rect x="10" y="0" width="2" height="4" fill="#fff"/>
+      <rect x="14" y="0" width="2" height="4" fill="#fff"/>
+      <rect x="0" y="3" width="3" height="3" fill="#888"/>
+      <rect x="0" y="4" width="16" height="10" fill="#222"/>
+      <rect x="1" y="6" width="14" height="1" fill="#555"/>
+      <rect x="1" y="8" width="14" height="1" fill="#555"/>
+      <rect x="1" y="10" width="14" height="1" fill="#555"/>
+      <rect x="1" y="12" width="14" height="1" fill="#555"/>
+    </svg>
+
+    <div class="ascii-cat c6"><span class="frame-a">=^.^=</span><span class="frame-b">=^o^=</span></div>
+    <div class="ascii-spin2">+</div>
+
+    <!-- Candy / lollipop -->
+    <svg class="pixel-icon pixel-spin-slow" viewBox="0 0 12 16" width="16" height="20">
+      <rect x="5" y="10" width="2" height="6" fill="#ccc"/>
+      <rect x="2" y="2" width="8" height="8" fill="#ff66cc"/>
+      <rect x="3" y="3" width="6" height="1" fill="#fff"/>
+      <rect x="2" y="4" width="1" height="4" fill="#fff"/>
+      <rect x="9" y="4" width="1" height="4" fill="#fff"/>
+      <rect x="3" y="8" width="6" height="1" fill="#fff"/>
+      <rect x="4" y="4" width="4" height="4" fill="#ff33aa"/>
+      <rect x="5" y="5" width="2" height="2" fill="#ff00aa"/>
+    </svg>
+
+    <div class="ascii-cat c7"><span class="frame-a">=^.^=</span><span class="frame-b">=^-^=</span></div>
+    <div class="ascii-face3 blink-face3">:-P</div>
+
+    <!-- Chocolate bar -->
+    <svg class="pixel-icon pixel-bounce" viewBox="0 0 16 12" width="20" height="16" style="animation-delay:0.9s">
+      <rect x="1" y="1" width="14" height="10" fill="#6b3a0f"/>
+      <rect x="2" y="2" width="12" height="8" fill="#8b4a1a"/>
+      <rect x="2" y="5" width="12" height="1" fill="#6b3a0f"/>
+      <rect x="6" y="2" width="1" height="8" fill="#6b3a0f"/>
+      <rect x="10" y="2" width="1" height="8" fill="#6b3a0f"/>
+      <rect x="3" y="3" width="2" height="2" fill="#9b5a2a"/>
+      <rect x="7" y="3" width="2" height="2" fill="#9b5a2a"/>
+      <rect x="11" y="3" width="2" height="2" fill="#9b5a2a"/>
+      <rect x="3" y="7" width="2" height="2" fill="#9b5a2a"/>
+      <rect x="7" y="7" width="2" height="2" fill="#9b5a2a"/>
+      <rect x="11" y="7" width="2" height="2" fill="#9b5a2a"/>
+    </svg>
+
+    <div class="ascii-cat c8"><span class="frame-a">=^.^=</span><span class="frame-b">=^u^=</span></div>
+    <div class="ascii-dancer2"><span class="frame-a">\(^o^)/</span><span class="frame-b">(^o^)/</span></div>
+
+    <!-- Film reel -->
+    <svg class="pixel-icon pixel-spin-slow" viewBox="0 0 16 16" width="20" height="20" style="animation-delay:0.2s">
+      <rect x="3" y="0" width="10" height="2" fill="#555"/>
+      <rect x="1" y="1" width="14" height="14" fill="#555"/>
+      <rect x="3" y="14" width="10" height="2" fill="#555"/>
+      <rect x="0" y="3" width="2" height="10" fill="#555"/>
+      <rect x="14" y="3" width="2" height="10" fill="#555"/>
+      <rect x="5" y="2" width="6" height="12" fill="#333"/>
+      <rect x="2" y="5" width="12" height="6" fill="#333"/>
+      <rect x="4" y="4" width="8" height="8" fill="#222"/>
+      <rect x="6" y="6" width="4" height="4" fill="#555"/>
+      <rect x="7" y="7" width="2" height="2" fill="#888"/>
+      <rect x="3" y="3" width="2" height="2" fill="#777"/>
+      <rect x="11" y="3" width="2" height="2" fill="#777"/>
+      <rect x="3" y="11" width="2" height="2" fill="#777"/>
+      <rect x="11" y="11" width="2" height="2" fill="#777"/>
+    </svg>
+
+    <div class="ascii-cat c9"><span class="frame-a">=^.^=</span><span class="frame-b">=^-^=</span></div>
+
+  </div>
+
+  <div id="day-header-row"></div>
+
+  <div id="decorations" aria-hidden="true">
+    <div class="badge new-badge">!! NEW !!</div>
+  </div>
+
+  <marquee id="marquee-strip" behavior="scroll" direction="left" scrollamount="2">
+    &nbsp;&nbsp;&nbsp; *** WELCOME TO NYC MOVIE CALENDAR *** &nbsp;&nbsp; :-) &nbsp;&nbsp; NOW SHOWING THIS WEEK &nbsp;&nbsp; ;-) &nbsp;&nbsp; HIT REFRESH TO SCRAPE FRESH SHOWTIMES &nbsp;&nbsp; ^_^ &nbsp;&nbsp; (>^o^)> &nbsp;&nbsp; MADE WITH NOTEPAD.EXE &nbsp;&nbsp; :-P &nbsp;&nbsp; BEST VIEWED IN INTERNET EXPLORER 6.0 &nbsp;&nbsp; \(^o^)/ &nbsp;&nbsp; *~*~*~*~*~*~*~*~*~* &nbsp;&nbsp; NO HOTLINKING &nbsp;&nbsp;&nbsp;
+  </marquee>
+
+  <main id="calendar-grid"></main>
+
+  <div id="win-statusbar">
+    <span id="win-status-msg">Done</span>
+    <span>&#128274; Local intranet</span>
+    <span>100%</span>
+  </div>
+
+  <!-- Welcome popup -->
+  <!-- Welcome popup -->
+  <div id="welcome-overlay">
+    <div id="welcome-dialog">
+      <div id="welcome-titlebar">
+        <div id="welcome-titlebar-left">
+          <span>🎬</span>
+          <span>NYC Movie Calendar</span>
+        </div>
+        <button class="win-btn win-close" onclick="closeWelcome()">&#x2715;</button>
+      </div>
+
+      <!-- animation strip -->
+      <div id="welcome-anim-top">
+        <!-- popcorn -->
+        <svg class="pixel-icon pixel-bounce" viewBox="0 0 14 16" width="16" height="18">
+          <rect x="1" y="0" width="3" height="3" fill="#ffee00"/>
+          <rect x="5" y="1" width="2" height="2" fill="#fff"/>
+          <rect x="8" y="0" width="3" height="3" fill="#ffee00"/>
+          <rect x="0" y="2" width="3" height="2" fill="#fff"/>
+          <rect x="11" y="1" width="3" height="2" fill="#ffee00"/>
+          <rect x="2" y="3" width="10" height="2" fill="#ffee00"/>
+          <rect x="3" y="5" width="8" height="1" fill="#fff"/>
+          <rect x="3" y="6" width="8" height="1" fill="#cc0000"/>
+          <rect x="3" y="7" width="8" height="1" fill="#fff"/>
+          <rect x="3" y="8" width="8" height="1" fill="#cc0000"/>
+          <rect x="3" y="9" width="8" height="1" fill="#fff"/>
+          <rect x="3" y="10" width="8" height="1" fill="#cc0000"/>
+          <rect x="3" y="11" width="8" height="1" fill="#fff"/>
+          <rect x="3" y="12" width="8" height="1" fill="#cc0000"/>
+          <rect x="4" y="13" width="6" height="1" fill="#880000"/>
+          <rect x="5" y="14" width="4" height="1" fill="#880000"/>
+        </svg>
+        <!-- soda -->
+        <svg class="pixel-icon pixel-bounce" viewBox="0 0 12 16" width="14" height="18" style="animation-delay:0.3s">
+          <rect x="8" y="0" width="2" height="5" fill="#ff4444"/>
+          <rect x="2" y="2" width="8" height="2" fill="#999"/>
+          <rect x="1" y="3" width="10" height="1" fill="#bbb"/>
+          <rect x="2" y="4" width="8" height="10" fill="#cc0000"/>
+          <rect x="3" y="5" width="6" height="8" fill="#dd1111"/>
+          <rect x="3" y="6" width="6" height="1" fill="#fff"/>
+          <rect x="3" y="8" width="6" height="1" fill="#fff"/>
+          <rect x="3" y="10" width="6" height="1" fill="#fff"/>
+          <rect x="3" y="14" width="6" height="1" fill="#990000"/>
+          <rect x="4" y="15" width="4" height="1" fill="#770000"/>
+        </svg>
+      </div>
+
+      <div id="welcome-body">
+        <p>Welcome to <strong>NYC Movie Calendar!</strong></p>
+        <p>This is a schedule of the week's screenings at various independent and arthouse cinemas in New York City, ranked by Keera's personal preference.</p>
+        <p>Click any title to be redirected to the virtual box office.</p>
+        <p>Enjoy! &nbsp;<span class="ascii-cat" style="display:inline-block;"><span class="frame-a">=^.^=</span><span class="frame-b">=^-^=</span></span></p>
+      </div>
+
+
+      <div id="welcome-footer">
+        <button id="welcome-ok" onclick="closeWelcome()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
