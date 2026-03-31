@@ -121,7 +121,11 @@ async function scrape(browser, locationSlug, theaterName, weekDates) {
   const theaterId = THEATER_IDS[locationSlug];
   const cinemaId = CINEMA_IDS[locationSlug];
 
-  const token = await getBearerToken(browser, locationSlug);
+  let token = await getBearerToken(browser, locationSlug);
+  if (!token) {
+    // Retry once
+    token = await getBearerToken(browser, locationSlug);
+  }
   if (!token) throw new Error(`Angelika ${locationSlug}: could not get bearer token`);
 
   return scrapeLocation(token, cinemaId, theaterName, theaterId, weekDates);

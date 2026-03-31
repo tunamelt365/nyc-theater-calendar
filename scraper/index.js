@@ -43,7 +43,7 @@ async function runAllScrapers() {
   const scraperTasks = [
     // Puppeteer scrapers — each gets its own browser
     { name: 'Metrograph',                       fn: () => withBrowser(b => metrograph(b, weekDates)) },
-    { name: 'IFC Center',                       fn: () => withBrowser(b => ifc(b, weekDates)) },
+    { name: 'IFC Center',                       fn: () => withBrowser(b => ifc(b, weekDates), 120000) },
     { name: 'Angelika Film Center',             fn: () => withBrowser(b => angelika(b, 'nyc', 'Angelika Film Center', weekDates)) },
     { name: 'Angelika Village East',            fn: () => withBrowser(b => angelika(b, 'villageeast', 'Angelika Village East', weekDates)) },
     { name: 'Quad Cinema',                      fn: () => withBrowser(b => quad(b, weekDates)) },
