@@ -24,8 +24,8 @@ async function scrape(browser, weekDates) {
 
   try {
     // Step 1: Get film links from the home page (requires JS)
-    await page.goto(BASE, { waitUntil: 'networkidle2', timeout: 60000 });
-    await new Promise(r => setTimeout(r, 2000));
+    await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await new Promise(r => setTimeout(r, 5000));
 
     const filmUrls = await page.evaluate((base) => {
       const links = new Set();

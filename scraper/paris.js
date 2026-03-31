@@ -20,8 +20,8 @@ async function scrape(browser, weekDates) {
   const results = [];
 
   try {
-    await page.goto(URL, { waitUntil: 'networkidle2', timeout: 60000 });
-    await new Promise(r => setTimeout(r, 2500));
+    await page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await new Promise(r => setTimeout(r, 6000));
 
     // Get available day picker entries: { ariaLabel, dateStr } e.g. { ariaLabel: "Select TUE", dateStr: "3/31" }
     const dayPickerEntries = await page.evaluate(() => {
