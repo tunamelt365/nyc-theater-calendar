@@ -1,5 +1,14 @@
 const puppeteer = require('puppeteer');
+const { execSync } = require('child_process');
 const { getCurrentWeekDates, getWeekBounds } = require('./utils');
+
+function getChromePath() {
+  if (process.env.PUPPETEER_EXECUTABLE_PATH) return process.env.PUPPETEER_EXECUTABLE_PATH;
+  try {
+    return execSync('which chromium || which chromium-browser', { encoding: 'utf8' }).trim();
+  } catch (e) {}
+  return puppeteer.executablePath();
+}
 
 const metrograph = require('./metrograph');
 const ifc = require('./ifc');
@@ -21,7 +30,7 @@ const PUPPETEER_ARGS = [
 
 // Wrap a scraper that needs its own browser instance
 async function withBrowser(fn) {
-  const browser = await puppeteer.launch({ headless: true, executablePath: puppeteer.executablePath(), args: PUPPETEER_ARGS });
+  const browser = await puppeteer.launch({ headless: true, executablePath: getChromePath(), args: PUPPETEER_ARGS });
   try {
     return await fn(browser);
   } finally {
