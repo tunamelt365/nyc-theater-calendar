@@ -44,8 +44,8 @@ async function getBearerToken(browser, locationSlug) {
   });
 
   try {
-    await page.goto(url, { waitUntil: 'load', timeout: 25000 }).catch(() => {});
-    await new Promise(r => setTimeout(r, 5000));
+    await page.goto(url, { waitUntil: 'load', timeout: 60000 }).catch(() => {});
+    await new Promise(r => setTimeout(r, 8000));
   } finally {
     await page.close().catch(() => {});
   }
