@@ -15,11 +15,14 @@
     <header>
       <h1>&#10022; NYC Movie Calendar &#10022;</h1>
       <div class="header-left">
+        <div id="trivia-btn-wrap" onclick="showTrivia()">
+          <img src="gifs/clickme.gif" id="trivia-gif" alt="Click me!" />
+          <span id="trivia-label">for a fun fact</span>
+        </div>
         <span id="week-label"></span>
       </div>
       <div class="header-right">
         <span id="last-updated"></span>
-        <button id="trivia-btn" onclick="showTrivia()">&#10067; Fun Fact</button>
         <button id="refresh-btn" onclick="triggerRefresh()">&#8635; Refresh</button>
       </div>
     </header>

@@ -520,32 +520,28 @@ a.movie-title:hover {
 }
 
 
-/* ─── Trivia button ─── */
-#trivia-btn {
-  background: #3a3a3a;
-  color: #d0d0d0;
-  border: none;
-  padding: 4px 14px;
-  font-family: Tahoma, sans-serif;
-  font-size: 11px;
+/* ─── Trivia gif button ─── */
+#trivia-btn-wrap {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   cursor: pointer;
-  white-space: nowrap;
-  box-shadow:
-    inset -1px -1px #000,
-    inset 1px 1px #666,
-    inset -2px -2px #222,
-    inset 2px 2px #555;
+  flex-shrink: 0;
 }
 
-#trivia-btn:hover { background: #444; }
+#trivia-gif {
+  height: 40px;
+  width: auto;
+  display: block;
+  image-rendering: auto;
+}
 
-#trivia-btn:active {
-  box-shadow:
-    inset 1px 1px #000,
-    inset -1px -1px #666,
-    inset 2px 2px #222,
-    inset -2px -2px #555;
-  padding: 5px 13px 3px 15px;
+#trivia-label {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-size: 13px;
+  color: #fff;
+  white-space: nowrap;
+  text-shadow: 1px 1px 0 #000, 0 0 8px rgba(100,180,255,0.5);
 }
 
 /* ─── Trivia popup ─── */
