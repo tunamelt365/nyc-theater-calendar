@@ -20,33 +20,7 @@ body {
   z-index: 100;
 }
 
-/* ─── Title bar ─── */
-#title-bar {
-  background: linear-gradient(to right, #000080 0%, #1084d0 50%, #000080 100%);
-  color: #fff;
-  padding: 3px 4px 3px 6px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 11px;
-  font-weight: bold;
-  user-select: none;
-}
-
-#title-bar-left {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-#title-bar-btns {
-  display: flex;
-  gap: 2px;
-  flex-shrink: 0;
-}
-
+/* ─── Win95 buttons (used in welcome dialog) ─── */
 .win-btn {
   width: 16px;
   height: 14px;
@@ -70,106 +44,6 @@ body {
     inset -1px -1px #666,
     inset 2px 2px #222,
     inset -2px -2px #555;
-}
-
-/* ─── Menu bar ─── */
-#menu-bar {
-  background: #2a2a2a;
-  padding: 1px 2px;
-  display: flex;
-  gap: 0;
-  font-size: 11px;
-  border-bottom: 1px solid #111;
-}
-
-#menu-bar span {
-  padding: 3px 8px;
-  cursor: default;
-  white-space: nowrap;
-  color: #d0d0d0;
-}
-
-#menu-bar span:hover {
-  background: #000080;
-  color: #fff;
-}
-
-/* ─── IE Toolbar ─── */
-#ie-toolbar {
-  background: #2a2a2a;
-  padding: 3px 6px;
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  border-bottom: 2px solid;
-  border-color: #111 #555 #555 #111;
-}
-
-.ie-btn {
-  background: #3a3a3a;
-  border: none;
-  padding: 3px 8px;
-  font-size: 11px;
-  font-family: Tahoma, sans-serif;
-  cursor: pointer;
-  white-space: nowrap;
-  color: #d0d0d0;
-  box-shadow:
-    inset -1px -1px #000,
-    inset 1px 1px #666,
-    inset -2px -2px #222,
-    inset 2px 2px #555;
-}
-
-.ie-btn:hover {
-  background: #444;
-}
-
-.ie-btn:active {
-  box-shadow:
-    inset 1px 1px #000,
-    inset -1px -1px #666,
-    inset 2px 2px #222,
-    inset -2px -2px #555;
-  padding: 4px 7px 2px 9px;
-}
-
-.ie-btn:disabled {
-  color: #555;
-  text-shadow: 1px 1px #000;
-  cursor: default;
-}
-
-#address-bar {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  min-width: 0;
-}
-
-#address-label {
-  white-space: nowrap;
-  font-size: 11px;
-  color: #aaa;
-}
-
-#address-input {
-  flex: 1;
-  min-width: 0;
-  background: #111;
-  color: #00ff88;
-  padding: 2px 4px;
-  font-size: 11px;
-  font-family: 'Courier New', Courier, monospace;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  box-shadow:
-    inset -1px -1px #555,
-    inset 1px 1px #000,
-    inset -2px -2px #444,
-    inset 2px 2px #111;
 }
 
 /* ─── Header / content toolbar ─── */
