@@ -765,3 +765,118 @@ a.movie-title:hover {
 }
 
 #win-status-msg { flex: 1; }
+
+/* ─── Mobile responsive ─── */
+@media (max-width: 600px) {
+
+  /* Header: title on top, controls below */
+  header {
+    flex-wrap: wrap;
+    padding: 4px 8px 6px;
+    gap: 4px;
+  }
+
+  h1 {
+    font-size: 18px;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: skewX(-6deg);
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    order: -1;
+    margin-bottom: 2px;
+  }
+
+  .header-left {
+    flex: 1;
+    gap: 4px;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  #trivia-btn-wrap {
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  #trivia-gif {
+    height: 26px;
+  }
+
+  #trivia-label {
+    font-size: 10px;
+  }
+
+  #week-label {
+    display: none;
+  }
+
+  .header-right {
+    flex-shrink: 0;
+  }
+
+  #last-updated {
+    display: none;
+  }
+
+  /* Hide ascii row on mobile — too wide and decorative */
+  #ascii-row {
+    display: none;
+  }
+
+  /* ── Shrink calendar columns ── */
+  #day-header-row,
+  #calendar-grid {
+    grid-template-columns: repeat(7, minmax(120px, 1fr));
+  }
+
+  .day-header {
+    font-size: 9px;
+    padding: 3px 5px;
+  }
+
+  .theater-block {
+    padding: 3px 5px 4px;
+    border-left-width: 2px;
+  }
+
+  .theater-name {
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+
+  .movie-entry {
+    margin-bottom: 3px;
+  }
+
+  .movie-title {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  .movie-showtimes {
+    font-size: 9px;
+  }
+
+  .movie-meta {
+    font-size: 8px;
+  }
+
+  /* Slim down the marquee text */
+  #marquee-strip {
+    font-size: 10px;
+  }
+
+  /* Dialogs: fit to screen width */
+  #trivia-dialog,
+  #welcome-dialog {
+    width: calc(100vw - 24px);
+  }
+
+  /* Win98 status bar: simplify on mobile */
+  #win-statusbar span:not(#win-status-msg) {
+    display: none;
+  }
+}
