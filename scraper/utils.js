@@ -1,10 +1,9 @@
-const { startOfWeek, addDays, format, parse, isValid } = require('date-fns');
+const { addDays, format, parse, isValid } = require('date-fns');
 
 function getCurrentWeekDates() {
   const today = new Date();
-  const monday = startOfWeek(today, { weekStartsOn: 1 });
   return Array.from({ length: 7 }, (_, i) =>
-    format(addDays(monday, i), 'yyyy-MM-dd')
+    format(addDays(today, i), 'yyyy-MM-dd')
   );
 }
 
