@@ -520,6 +520,120 @@ a.movie-title:hover {
 }
 
 
+/* ─── Trivia button ─── */
+#trivia-btn {
+  background: #3a3a3a;
+  color: #d0d0d0;
+  border: none;
+  padding: 4px 14px;
+  font-family: Tahoma, sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow:
+    inset -1px -1px #000,
+    inset 1px 1px #666,
+    inset -2px -2px #222,
+    inset 2px 2px #555;
+}
+
+#trivia-btn:hover { background: #444; }
+
+#trivia-btn:active {
+  box-shadow:
+    inset 1px 1px #000,
+    inset -1px -1px #666,
+    inset 2px 2px #222,
+    inset -2px -2px #555;
+  padding: 5px 13px 3px 15px;
+}
+
+/* ─── Trivia popup ─── */
+#trivia-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#trivia-overlay.hidden { display: none; }
+
+#trivia-dialog {
+  width: 420px;
+  background: #2a2a2a;
+  box-shadow:
+    inset -1px -1px #000,
+    inset 1px 1px #666,
+    inset -2px -2px #222,
+    inset 2px 2px #555,
+    4px 4px 0 #000;
+  font-family: Tahoma, 'MS Sans Serif', Arial, sans-serif;
+}
+
+#trivia-titlebar {
+  background: linear-gradient(to right, #000080 0%, #1084d0 50%, #000080 100%);
+  color: #fff;
+  padding: 3px 4px 3px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: bold;
+  user-select: none;
+}
+
+#trivia-titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#trivia-body {
+  padding: 20px 20px 14px;
+}
+
+#trivia-text {
+  font-size: 12px;
+  color: #d0d0d0;
+  line-height: 1.7;
+}
+
+#trivia-footer {
+  padding: 8px 18px 12px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+#trivia-another, #trivia-ok {
+  background: #3a3a3a;
+  color: #d0d0d0;
+  border: none;
+  padding: 4px 20px;
+  font-family: Tahoma, sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  box-shadow:
+    inset -1px -1px #000,
+    inset 1px 1px #666,
+    inset -2px -2px #222,
+    inset 2px 2px #555;
+}
+
+#trivia-another:hover, #trivia-ok:hover { background: #444; }
+
+#trivia-another:active, #trivia-ok:active {
+  box-shadow:
+    inset 1px 1px #000,
+    inset -1px -1px #666,
+    inset 2px 2px #222,
+    inset -2px -2px #555;
+  padding: 5px 19px 3px 21px;
+}
+
 /* ─── Welcome popup ─── */
 #welcome-overlay {
   position: fixed;

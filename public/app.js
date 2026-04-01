@@ -1,3 +1,61 @@
+const TRIVIA = [
+  "Darth Vader never says \"Luke, I am your father.\" The actual line is \"No. I am your father.\"",
+  "The dog who played Toto in The Wizard of Oz was named Terry and earned $125/week on set — more than several of the actors playing Munchkins.",
+  "The "future" in Back to the Future Part II was October 21, 2015. We've already been there — still no hoverboards.",
+  "John Wick's entire three-movie killing spree was triggered by someone murdering his puppy and stealing his car.",
+  "Michael Keaton's real name is Michael Douglas. He changed it because another Michael Douglas was already famous.",
+  "Michael Caine's real name is Maurice Micklewhite. He chose \"Caine\" after glancing at a poster for The Caine Mutiny.",
+  "Harrison Ford wasn't supposed to be Han Solo — he was just reading lines to help other actors audition when George Lucas cast him.",
+  "After Wallace & Gromit started obsessing over Wensleydale cheese in their shorts, the real Wensleydale Creamery was saved from bankruptcy by the spike in sales.",
+  "The entire score of Birdman is just drums. No orchestra, no strings — just a live drummer playing the whole way through.",
+  "To promote The Simpsons Movie, 7-Eleven converted 11 of their real stores into actual Kwik-E-Marts for a month.",
+  "In Toy Story, Buzz Lightyear is convinced he's a real space ranger — yet he still freezes whenever a human walks in, just like all the other toys.",
+  "Nicolas Cage once bought a dinosaur skull for $276,000 at auction and had to return it to the Mongolian government because it was stolen property.",
+  "The shower scene in Psycho took 7 days to film, used 70 camera setups, and contains no actual nudity.",
+  "The Wilhelm Scream — a goofy stock sound effect of a man yelping — has been used in over 400 films, including every Star Wars and Indiana Jones movie.",
+  "Tom Hanks lost 50 pounds for Cast Away. Production literally shut down for a year while he dieted, then resumed for the island sequences.",
+  "Bruce Campbell's entire victory speech after defeating a monster in Evil Dead 2 is just: \"Groovy.\"",
+  "The velociraptor sounds in Jurassic Park are recordings of tortoises mating.",
+  "Marlon Brando improvised putting the cat in his lap in The Godfather's opening scene. The cat wasn't in the script at all — it just wandered onto set.",
+  "Sean Connery wore a toupee in every single James Bond film.",
+  "Robin Williams improvised so much of the Genie's dialogue in Aladdin that the animators had to redesign scenes around his ad-libs.",
+  "Matt Damon and Ben Affleck sold the Good Will Hunting script for $600,000 but made acting in it themselves a non-negotiable condition of the sale.",
+  "Clueless is a complete scene-for-scene adaptation of Jane Austen's Emma, set in a Beverly Hills high school.",
+  "James Cameron personally drew the nude sketch of Kate Winslet in Titanic.",
+  "The Titanic movie cost more to make than the actual Titanic ship cost to build, even adjusted for inflation.",
+  "The original Alien cast had no idea what the chest-bursting scene would look like. Ridley Scott kept it secret so their horrified reactions would be real.",
+  "In Grease, all the actors playing high schoolers were well into their 20s. Stockard Channing, who played Rizzo, was 34.",
+  "Steven Spielberg initially laughed when John Williams played him the Jaws theme, thinking it was a joke. Williams had to play it several more times before Spielberg realized it was the actual score.",
+  "Eddie Murphy and Dan Aykroyd's characters in Trading Places have their entire lives destroyed as part of a bet made for exactly one dollar.",
+  "The Shining's hedge maze didn't exist in Stephen King's original novel. Kubrick added it, and King famously hated the adaptation.",
+  "In Jurassic Park, the raptor that delivers the \"clever girl\" kill had been pretending to be alone while her packmate flanked the hunter from the side.",
+  "Clint Eastwood has directed and produced dozens of films but has never watched any of them after they were finished.",
+  "The Stay Puft Marshmallow Man in Ghostbusters was designed to be the most harmless, comforting form the villain could possibly take. It still destroys several city blocks.",
+  "In Parasite, the \"smell\" that the wealthy Park family keeps noticing is a major plot device — but director Bong Joon-ho never actually explains what it is. He said it represents class itself.",
+  "Apocalypse Now's opening napalm sequence used a real fire. Coppola set an actual set ablaze, and Marlon Brando arrived on set weeks late, 100 pounds overweight, and having not read the source material.",
+  "The Dude's rug in The Big Lebowski — the one that \"really tied the room together\" — is referenced exactly nine times throughout the movie.",
+  "In the original Star Wars, R2-D2 and C-3PO were the only characters to appear in all six prequel and original trilogy films, making them the true protagonists by screen time continuity.",
+  "The \"I see dead people\" line from The Sixth Sense was delivered by Haley Joel Osment, who was 11 years old and received an Academy Award nomination for it.",
+  "The $5 milkshake in Pulp Fiction was a real menu item at the actual Jack Rabbit Slim's-inspired diner used in filming. In 1994, $5 for a milkshake was genuinely scandalous.",
+  "Toy Story (1995) was the first feature-length film made entirely with CGI. The entire animation team at Pixar consisted of about 27 people.",
+  "The iconic line from Casablanca — \"Here's looking at you, kid\" — was reportedly improvised by Humphrey Bogart and wasn't in the original script.",
+  "Home Alone was the highest-grossing film of 1990 and cost only $15 million to make, earning over $476 million worldwide.",
+  "In the original Ghostbusters script, the ghost exterminators operated in a dystopian future where there were thousands of them. Dan Aykroyd and Harold Ramis rewrote it entirely.",
+  "During the filming of The Wizard of Oz, the \"tornado\" was a 35-foot muslin stocking spun on a gantry and dusted with fuller's earth to look like a cloud.",
+  "The Wilhelm Scream was first recorded in 1951 for a film called Distant Drums and is named after a character named Private Wilhelm who gets shot in the leg by an arrow in The Charge at Feather River (1953).",
+  "Pixar hid a \"A113\" — the number of the animation classroom at CalArts where many Pixar founders studied — in every single one of their films.",
+];
+
+function showTrivia() {
+  const fact = TRIVIA[Math.floor(Math.random() * TRIVIA.length)];
+  document.getElementById('trivia-text').textContent = fact;
+  document.getElementById('trivia-overlay').classList.remove('hidden');
+}
+
+function closeTrivia() {
+  document.getElementById('trivia-overlay').classList.add('hidden');
+}
+
 const THEATER_ORDER = [
   { id: 'metrograph',           name: 'Metrograph' },
   { id: 'ifc',                  name: 'IFC Center' },

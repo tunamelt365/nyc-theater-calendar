@@ -19,6 +19,7 @@
       </div>
       <div class="header-right">
         <span id="last-updated"></span>
+        <button id="trivia-btn" onclick="showTrivia()">&#10067; Fun Fact</button>
         <button id="refresh-btn" onclick="triggerRefresh()">&#8635; Refresh</button>
       </div>
     </header>
@@ -200,6 +201,23 @@
     <span id="win-status-msg">Done</span>
     <span>&#128274; Local intranet</span>
     <span>100%</span>
+  </div>
+
+  <!-- Trivia popup -->
+  <div id="trivia-overlay" class="hidden">
+    <div id="trivia-dialog">
+      <div id="trivia-titlebar">
+        <div id="trivia-titlebar-left"><span>🎬</span><span>Fun Fact</span></div>
+        <button class="win-btn win-close" onclick="closeTrivia()">&#x2715;</button>
+      </div>
+      <div id="trivia-body">
+        <p id="trivia-text"></p>
+      </div>
+      <div id="trivia-footer">
+        <button id="trivia-another" onclick="showTrivia()">Another!</button>
+        <button id="trivia-ok" onclick="closeTrivia()">OK</button>
+      </div>
+    </div>
   </div>
 
   <!-- Welcome popup -->
