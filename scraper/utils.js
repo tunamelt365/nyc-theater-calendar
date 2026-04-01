@@ -1,7 +1,17 @@
 const { addDays, format, parse, isValid } = require('date-fns');
 
+function getTodayNYC() {
+  // Use NYC timezone so the calendar reflects local date, not UTC
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/New_York',
+    year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(new Date()); // returns "YYYY-MM-DD"
+}
+
 function getCurrentWeekDates() {
-  const today = new Date();
+  const todayStr = getTodayNYC();
+  const [y, m, d] = todayStr.split('-').map(Number);
+  const today = new Date(y, m - 1, d);
   return Array.from({ length: 7 }, (_, i) =>
     format(addDays(today, i), 'yyyy-MM-dd')
   );
