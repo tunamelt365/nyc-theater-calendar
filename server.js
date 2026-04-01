@@ -38,7 +38,41 @@ app.post('/api/refresh', async (req, res) => {
   }
 });
 
+// ─── Auto-refresh scheduler ───
+// Runs a full scrape every day at 8:00 AM New York time.
+async function scheduledRefresh() {
+  console.log('[scheduler] Running scheduled morning refresh...');
+  try {
+    const result = await runAllScrapers();
+    cache.set(result);
+    console.log(`[scheduler] Done. ${result.showtimes.length} showtime entries scraped.`);
+  } catch (err) {
+    console.error('[scheduler] Scrape failed:', err.message);
+  }
+  scheduleNextRefresh();
+}
+
+function scheduleNextRefresh() {
+  const now = new Date();
+  // Get current time in NYC
+  const nycStr = now.toLocaleString('en-US', { timeZone: 'America/New_York' });
+  const nycNow = new Date(nycStr);
+
+  // Build next 8:00 AM NYC
+  const next8am = new Date(nycNow);
+  next8am.setHours(8, 0, 0, 0);
+  if (next8am <= nycNow) {
+    next8am.setDate(next8am.getDate() + 1);
+  }
+
+  const msUntil = next8am - nycNow;
+  const hoursUntil = (msUntil / 1000 / 60 / 60).toFixed(2);
+  console.log(`[scheduler] Next auto-refresh in ${hoursUntil} hours (8:00 AM NYC).`);
+  setTimeout(scheduledRefresh, msUntil);
+}
+
 app.listen(PORT, () => {
   console.log(`NYC Theater Calendar running at http://localhost:${PORT}`);
   console.log('Open the URL in your browser, then click Refresh to load showtimes.');
+  scheduleNextRefresh();
 });
