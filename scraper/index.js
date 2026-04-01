@@ -24,13 +24,39 @@ const PUPPETEER_ARGS = [
   '--ignore-certificate-errors',
 ];
 
+// Limit concurrent Chrome instances to avoid overwhelming the server
+const MAX_CONCURRENT_BROWSERS = 3;
+let activeBrowsers = 0;
+const browserQueue = [];
+
+function acquireBrowserSlot() {
+  return new Promise(resolve => {
+    if (activeBrowsers < MAX_CONCURRENT_BROWSERS) {
+      activeBrowsers++;
+      resolve();
+    } else {
+      browserQueue.push(resolve);
+    }
+  });
+}
+
+function releaseBrowserSlot() {
+  activeBrowsers--;
+  if (browserQueue.length > 0) {
+    activeBrowsers++;
+    browserQueue.shift()();
+  }
+}
+
 // Wrap a scraper that needs its own browser instance
 async function withBrowser(fn, protocolTimeout = 60000) {
+  await acquireBrowserSlot();
   const browser = await puppeteer.launch({ headless: true, executablePath: getChromePath(), args: PUPPETEER_ARGS, protocolTimeout });
   try {
     return await fn(browser);
   } finally {
     await browser.close().catch(() => {});
+    releaseBrowserSlot();
   }
 }
 
