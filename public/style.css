@@ -537,7 +537,7 @@ a.movie-title:hover {
 }
 
 #trivia-label {
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', cursive;
   font-size: 13px;
   color: #fff;
   white-space: nowrap;
