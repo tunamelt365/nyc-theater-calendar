@@ -1,7 +1,7 @@
 const TRIVIA = [
   "Darth Vader never says \"Luke, I am your father.\" The actual line is \"No. I am your father.\"",
   "The dog who played Toto in The Wizard of Oz was named Terry and earned $125/week on set — more than several of the actors playing Munchkins.",
-  "The "future" in Back to the Future Part II was October 21, 2015. We've already been there — still no hoverboards.",
+  "The 'future' in Back to the Future Part II was October 21, 2015. We've already been there — still no hoverboards.",
   "John Wick's entire three-movie killing spree was triggered by someone murdering his puppy and stealing his car.",
   "Michael Keaton's real name is Michael Douglas. He changed it because another Michael Douglas was already famous.",
   "Michael Caine's real name is Maurice Micklewhite. He chose \"Caine\" after glancing at a poster for The Caine Mutiny.",
