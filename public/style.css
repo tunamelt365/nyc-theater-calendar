@@ -378,16 +378,14 @@ a.movie-title:hover {
   right: 6px;
 }
 
-/* Decorative star GIFs */
-.deco-star {
-  position: absolute;
-  width: 32px;
-  height: auto;
+/* Star next to last-updated in header */
+#header-star {
+  height: 16px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 4px;
   image-rendering: pixelated;
 }
-.deco-star.star-a { top: 80px;    left: 10px;  }
-.deco-star.star-b { bottom: 50px; right: 30px; }
-.deco-star.star-c { top: 45%;    right: 12px; }
 
 /* ASCII animation bar between marquee and day headers */
 #ascii-row {
@@ -779,8 +777,6 @@ a.movie-title:hover {
 
 /* ─── Mobile responsive ─── */
 @media (max-width: 600px) {
-
-  .deco-star { display: none; }
 
   /* Header: title on top, controls below */
   header {
