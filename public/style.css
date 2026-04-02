@@ -382,6 +382,8 @@ a.movie-title:hover {
 #spinstar-deco {
   width: 56px;
   height: auto;
+  margin-top: -20px;
+  margin-bottom: -20px;
   image-rendering: pixelated;
   vertical-align: middle;
 }
