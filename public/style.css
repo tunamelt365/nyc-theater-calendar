@@ -380,8 +380,8 @@ a.movie-title:hover {
 
 /* Spinning star in ascii row */
 #spinstar-deco {
-  height: 20px;
-  width: auto;
+  width: 56px;
+  height: auto;
   image-rendering: pixelated;
   vertical-align: middle;
 }
