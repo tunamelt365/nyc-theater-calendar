@@ -380,14 +380,12 @@ a.movie-title:hover {
 
 /* Spinning star in ascii row */
 #spinstar-deco {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
   width: 56px;
   height: auto;
-  z-index: 999;
+  margin-top: -20px;
+  margin-bottom: -20px;
   image-rendering: pixelated;
+  vertical-align: middle;
 }
 
 /* Star next to last-updated in header */
@@ -406,8 +404,6 @@ a.movie-title:hover {
   align-items: center;
   gap: 0;
   padding: 6px 12px;
-  position: relative;
-  overflow: visible;
   background: #0d0d1a;
   border-bottom: 1px solid #1a1a33;
   font-family: 'Courier New', Courier, monospace;
