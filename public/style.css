@@ -381,7 +381,7 @@ a.movie-title:hover {
 /* Spinning star decoration — far-right of calendar area */
 #spinstar-deco {
   position: absolute;
-  top: 130px;
+  top: 72px;
   right: 18px;
   width: 56px;
   height: auto;
