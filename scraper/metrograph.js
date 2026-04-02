@@ -1,6 +1,5 @@
 // Metrograph — Puppeteer
-// Structure: .day-selector-day[data-vars-ga-label] maps dates to index
-//            .calendar-list-day (same order) contains films
+// Structure: .calendar-list-day[id="calendar-list-day-YYYY-MM-DD"] contains films for that date
 //            Each film: h4>a.title, .film-metadata, .showtimes>a (times like "4:00pm")
 
 const { normalizeTime } = require('./utils');
@@ -22,15 +21,12 @@ async function scrape(browser, weekDates) {
       const weekSet = new Set(weekDatesArr);
       const results = [];
 
-      // Get ordered list of dates from day selector
-      const dayBtns = document.querySelectorAll('.day-selector-day');
-      const dates = [...dayBtns].map(btn => btn.getAttribute('data-vars-ga-label')).filter(Boolean);
-
-      // Get ordered list of day content grids
+      // Each day grid has id="calendar-list-day-YYYY-MM-DD" — read date directly from id
       const dayGrids = document.querySelectorAll('.calendar-list-day');
 
-      dayGrids.forEach((grid, i) => {
-        const date = dates[i];
+      dayGrids.forEach((grid) => {
+        const id = grid.getAttribute('id') || '';
+        const date = id.replace('calendar-list-day-', '');
         if (!date || !weekSet.has(date)) return;
 
         grid.querySelectorAll('.item.film-thumbnail, .homepage-in-theater-movie').forEach(item => {
