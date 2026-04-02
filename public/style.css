@@ -378,14 +378,12 @@ a.movie-title:hover {
   right: 6px;
 }
 
-/* Spinning star decoration — far-right of calendar area */
+/* Spinning star in ascii row */
 #spinstar-deco {
-  position: absolute;
-  top: 72px;
-  right: 18px;
-  width: 56px;
-  height: auto;
+  height: 20px;
+  width: auto;
   image-rendering: pixelated;
+  vertical-align: middle;
 }
 
 /* Star next to last-updated in header */
